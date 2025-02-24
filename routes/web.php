@@ -7,6 +7,7 @@ use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Console\AboutCommand;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\WelcomeController;
 
 Route::get('/hello', function(){
     return 'Hello World';
@@ -37,3 +38,9 @@ Route::resource('photos', PhotoController::class);
 Route::resource('photos', PhotoController::class)->only([
     'index', 'show'
 ]);
+
+Route::get('/greeting', function () {
+	return view('blog.hello', ['name' => 'Alifia']);
+});
+
+Route::get('/greeting', [WelcomeController::class, 'greeting']);
